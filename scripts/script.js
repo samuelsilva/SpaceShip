@@ -5,6 +5,12 @@ document.addEventListener("click", function(e){
     changeScene(game);
 });
 
+document.addEventListener("mousemove", function(e){
+    if(currentScene.moveShip) {
+        currentScene.moveShip(e);
+    }
+});
+
 var currentScene = {};
 function changeScene(scene) {
     currentScene = scene;
@@ -55,6 +61,11 @@ var game = {
     
     score: new Text("0"),
     ship: new Obj(220, 800, 60, 50, "assets/nave.png"),
+
+    moveShip(event) {
+        this.ship.positionX = event.offsetX - this.ship.width / 2;
+        this.ship.positionY = event.offsetY - 30;
+    },
 
     draw(){
         infinityBg.draw();
