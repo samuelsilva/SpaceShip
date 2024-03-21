@@ -2,7 +2,9 @@ var canvas = document.getElementById('canvas').getContext("2d");
 canvas.imageSmoothingEnabled = false;
 
 document.addEventListener("click", function(e){
-    changeScene(game);
+    if(currentScene.click) {
+        currentScene.click();
+    }
 });
 
 document.addEventListener("mousemove", function(e){
@@ -46,6 +48,9 @@ var menu = {
     label: new Text("Click to Start"),
     ship: new Obj(220, 800, 60, 50, "assets/nave.png"),
 
+    click() {
+        changeScene(game);
+    },
     draw(){
         infinityBg.draw();
         this.title.draw_text(60, "Arial", 80, 300, "white");
@@ -66,7 +71,9 @@ var game = {
         this.ship.positionX = event.offsetX - this.ship.width / 2;
         this.ship.positionY = event.offsetY - 30;
     },
+    click(){
 
+    },
     draw(){
         infinityBg.draw();
         this.score.draw_text(30, "Arial", 40, 40, "white");
