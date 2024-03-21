@@ -16,6 +16,9 @@ var menu = {
     bg: new Obj(0,0,500, 900, "assets/fundo.png"),
     bg2: new Obj(0,-900, 500, 900, "assets/fundo.png"),
     title: new Text("SPACESHIP"),
+    label: new Text("Click to Start"),
+    ship: new Obj(220, 800, 60, 50, "assets/nave.png"),
+
 
     moveBg(){
         this.bg.positionY += 1;
@@ -32,7 +35,9 @@ var menu = {
     draw(){
         this.bg.draw();
         this.bg2.draw();
-        this.title.draw_text(40, "Arial", 145, 450, "white");
+        this.title.draw_text(60, "Arial", 80, 300, "white");
+        this.label.draw_text(20, "Arial", 200, 450, "white");
+        this.ship.draw();
     },
     update(){
         this.moveBg();
