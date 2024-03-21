@@ -60,3 +60,9 @@ class Text{
         canvas.fillText(this.text, posicaoX, posicaoY);
     }
 }
+
+class Shoot extends Obj{
+    move(){
+        this.positionY -= 10;
+    }
+}
