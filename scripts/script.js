@@ -9,7 +9,14 @@ function changeScene(scene) {
 
 // as cenas passam a ser desenhadas e não apenas um objeto
 var menu = {
-    draw(){},
+    
+    bg: new Obj(0,0,500, 900, "assets/fundo.png"),
+    title: new Text("SPACESHIP"),
+
+    draw(){
+        this.bg.draw();
+        this.title.draw_text(40, "Arial", 145, 450, "white");
+    },
     update(){},
 }
 
