@@ -10,15 +10,14 @@ function changeScene(scene) {
     currentScene = scene;
 }
 
-// as cenas passam a ser desenhadas e não apenas um objeto
-var menu = {
-    
+var infinityBg = {
     bg: new Obj(0,0,500, 900, "assets/fundo.png"),
     bg2: new Obj(0,-900, 500, 900, "assets/fundo.png"),
-    title: new Text("SPACESHIP"),
-    label: new Text("Click to Start"),
-    ship: new Obj(220, 800, 60, 50, "assets/nave.png"),
 
+    draw(){
+        this.bg.draw();
+        this.bg2.draw();
+    },
 
     moveBg(){
         this.bg.positionY += 1;
@@ -32,43 +31,53 @@ var menu = {
         }
     },
 
+}
+
+// as cenas passam a ser desenhadas e não apenas um objeto
+var menu = {
+    
+    title: new Text("SPACESHIP"),
+    label: new Text("Click to Start"),
+    ship: new Obj(220, 800, 60, 50, "assets/nave.png"),
+
     draw(){
-        this.bg.draw();
-        this.bg2.draw();
+        infinityBg.draw();
         this.title.draw_text(60, "Arial", 80, 300, "white");
         this.label.draw_text(20, "Arial", 200, 450, "white");
         this.ship.draw();
     },
     update(){
-        this.moveBg();
+        infinityBg.moveBg();
     },
 }
 
 var game = {
     
-    bg: new Obj(0,0,500, 900, "assets/fundo.png"),
     score: new Text("0"),
     ship: new Obj(220, 800, 60, 50, "assets/nave.png"),
 
     draw(){
-        this.bg.draw();
+        infinityBg.draw();
         this.score.draw_text(30, "Arial", 40, 40, "white");
         this.ship.draw();
     },
-    update(){},
+    update(){
+        infinityBg.moveBg();
+    },
 
 }
 
 var gameOver = {
 
-    bg: new Obj(0,0,500, 900, "assets/fundo.png"),
     score: new Text("0"),
 
     draw(){
-        this.bg.draw();
+        infinityBg.draw();
         this.score.draw_text(30, "Arial", 40, 40, "white");
     },
-    update(){},
+    update(){
+        infinityBg.moveBg();
+    },
 }
 
 function main() {
