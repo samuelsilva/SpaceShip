@@ -24,7 +24,16 @@ var menu = {
 }
 
 var game = {
-    draw(){},
+    
+    bg: new Obj(0,0,500, 900, "assets/fundo.png"),
+    score: new Text("0"),
+    ship: new Obj(220, 800, 60, 50, "assets/nave.png"),
+
+    draw(){
+        this.bg.draw();
+        this.score.draw_text(30, "Arial", 40, 40, "white");
+        this.ship.draw();
+    },
     update(){},
 
 }
