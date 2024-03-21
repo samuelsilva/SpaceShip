@@ -19,7 +19,7 @@ function changeScene(scene) {
 };
 
 var groupShoot = [];
-var shoot = new Obj(0,0,2,10, "assets/tiro.png");
+//var shoot = new Obj(0,0,2,10, "assets/tiro.png");
 
 var infinityBg = {
     bg: new Obj(0,0,500, 900, "assets/fundo.png"),
@@ -75,12 +75,16 @@ var game = {
         this.ship.positionY = event.offsetY - 30;
     },
     click(){
-
+        groupShoot.push(new Obj(this.ship.positionX,this.ship.positionY,2,10, "assets/tiro.png")); // add items to group
     },
     draw(){
         infinityBg.draw();
         this.score.draw_text(30, "Arial", 40, 40, "white");
         this.ship.draw();
+
+        groupShoot.forEach((shoot) =>{
+            shoot.draw();
+        });
     },
     update(){
         infinityBg.moveBg();
