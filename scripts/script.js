@@ -16,7 +16,10 @@ document.addEventListener("mousemove", function(e){
 var currentScene = {};
 function changeScene(scene) {
     currentScene = scene;
-}
+};
+
+var groupShoot = [];
+var shoot = new Obj(0,0,2,10, "assets/tiro.png");
 
 var infinityBg = {
     bg: new Obj(0,0,500, 900, "assets/fundo.png"),
@@ -39,7 +42,7 @@ var infinityBg = {
         }
     },
 
-}
+};
 
 // as cenas passam a ser desenhadas e não apenas um objeto
 var menu = {
@@ -60,7 +63,7 @@ var menu = {
     update(){
         infinityBg.moveBg();
     },
-}
+};
 
 var game = {
     
@@ -83,7 +86,7 @@ var game = {
         infinityBg.moveBg();
     },
 
-}
+};
 
 var gameOver = {
 
