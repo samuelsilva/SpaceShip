@@ -14,13 +14,29 @@ function changeScene(scene) {
 var menu = {
     
     bg: new Obj(0,0,500, 900, "assets/fundo.png"),
+    bg2: new Obj(0,-900, 500, 900, "assets/fundo.png"),
     title: new Text("SPACESHIP"),
+
+    moveBg(){
+        this.bg.positionY += 1;
+        this.bg2.positionY += 1;
+        
+        if(this.bg.positionY >= 900) {
+            this.bg = 0;
+        }
+        if(this.bg2.positionY >= 0) {
+            this.bg2 = -900;
+        }
+    },
 
     draw(){
         this.bg.draw();
+        this.bg2.draw();
         this.title.draw_text(40, "Arial", 145, 450, "white");
     },
-    update(){},
+    update(){
+        this.moveBg();
+    },
 }
 
 var game = {
