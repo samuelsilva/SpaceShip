@@ -38,6 +38,17 @@ var game = {
 
 }
 
+var gameOver = {
+
+    bg: new Obj(0,0,500, 900, "assets/fundo.png"),
+    score: new Text("0"),
+
+    draw(){
+        this.bg.draw();
+        this.score.draw_text(30, "Arial", 40, 40, "white");
+    },
+    update(){},
+}
 
 function main() {
     canvas.clearRect(0,0,500,900);
