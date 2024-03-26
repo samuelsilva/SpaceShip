@@ -39,7 +39,7 @@ var shoots = {
 var groupMeteors = [];
 var meteors = {
     time: 0,
-    spawMeteors() {
+    spawMeteors(){
         this.time += 1;
 
         size = Math.random () * (80 - 50) + 50;
@@ -52,6 +52,17 @@ var meteors = {
         }
     },   
 
+    destroyMeteors(){
+        groupShoot.forEach((shoot) => {
+            groupMeteors.forEach((meteor) => {
+                if(shoot.collide(meteor)) {
+                    groupShoot.splice(groupShoot.indexOf(shoot),1);
+                    groupMeteors.splice(groupMeteors.indexOf(meteor),1);
+                }
+            });
+        });
+    },
+
     draw(){
         groupMeteors.forEach((meteor)=>{
             meteor.draw();
@@ -59,6 +70,7 @@ var meteors = {
     },
     update(){
         this.spawMeteors();
+        this.destroyMeteors();
         groupMeteors.forEach((meteor)=>{
             meteor.move();
 
