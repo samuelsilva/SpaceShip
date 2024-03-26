@@ -68,7 +68,9 @@ class Shoot extends Obj{
 }
 
 class Meteors extends Obj{
+
+    speed = Math.random() * (10 - 2) + 2;
     move(){
-        this.positionY += 10;
+        this.positionY += this.speed;
     }
 }
