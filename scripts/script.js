@@ -141,7 +141,7 @@ var game = {
         this.ship.positionY = event.offsetY - 30;
     },
     click(){
-        groupShoot.push(new Shoot(this.ship.positionX + 29,this.ship.positionY,2,10, "assets/tiro.png")); // add items to group
+        groupShoot.push(new Shoot(this.ship.positionX + this.ship.width/2,this.ship.positionY,2,10, "assets/tiro.png")); // add items to group
     },
     draw(){
         infinityBg.draw();
