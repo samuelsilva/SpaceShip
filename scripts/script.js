@@ -19,6 +19,8 @@ function changeScene(scene) {
 };
 
 var bullets = 1;
+var points = 0;
+
 
 var groupShoot = [];
 var shoots = {
@@ -61,6 +63,7 @@ var meteors = {
                     groupShoot.splice(groupShoot.indexOf(shoot),1);
                     groupMeteors.splice(groupMeteors.indexOf(meteor),1);
                     bullets = 1;
+                    points += 1;
                 }
             });
         });
@@ -163,6 +166,7 @@ var game = {
         infinityBg.moveBg();
         shoots.update();
         meteors.update();
+        this.score.update_text(points);
     },
 
 };
@@ -179,11 +183,20 @@ var gameOver = {
     },
     update(){
         infinityBg.moveBg();
+        this.score.update_text(points);
+    },
+    cleanScene(){
+        points = 0;
+        bullets = 1;
+        groupMeteors = [];
+        groupShoot = [];
     },
 
     click(){
+        this.cleanScene();
         changeScene(menu);
-    }
+
+    },
 }
 
 function main() {
