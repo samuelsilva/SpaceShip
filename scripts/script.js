@@ -62,6 +62,13 @@ var meteors = {
         groupMeteors.forEach((meteor)=>{
             meteor.move();
 
+            // Remove meteors -> from memory
+            if(meteor.positionY > 1000) {
+                // Meteors have differents speed so, if remove "meteor[0]" you may remove the wrong meteor
+                //groupMeteors.splice(meteor[0],1);
+                groupMeteors.splice(groupMeteors.indexOf(meteor),1);
+
+            }
 
         });
     },
