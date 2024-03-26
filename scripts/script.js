@@ -18,6 +18,8 @@ function changeScene(scene) {
     currentScene = scene;
 };
 
+var bullets = 1;
+
 var groupShoot = [];
 var shoots = {
     draw(){
@@ -58,6 +60,7 @@ var meteors = {
                 if(shoot.collide(meteor)) {
                     groupShoot.splice(groupShoot.indexOf(shoot),1);
                     groupMeteors.splice(groupMeteors.indexOf(meteor),1);
+                    bullets = 1;
                 }
             });
         });
@@ -141,7 +144,12 @@ var game = {
         this.ship.positionY = event.offsetY - 30;
     },
     click(){
-        groupShoot.push(new Shoot(this.ship.positionX + this.ship.width/2,this.ship.positionY,2,10, "assets/tiro.png")); // add items to group
+        //groupShoot.push(new Shoot(this.ship.positionX + this.ship.width/2,this.ship.positionY,2,10, "assets/tiro.png")); // add items to group
+        //hardmode
+        if(bullets > 0) {
+            bullets -= 1;
+            groupShoot.push(new Shoot(this.ship.positionX + this.ship.width/2,this.ship.positionY,2,10, "assets/tiro.png")); // add items to group
+        }
     },
     draw(){
         infinityBg.draw();
