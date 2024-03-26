@@ -66,3 +66,9 @@ class Shoot extends Obj{
         this.positionY -= 10;
     }
 }
+
+class Meteors extends Obj{
+    move(){
+        this.positionY += 10;
+    }
+}

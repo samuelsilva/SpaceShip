@@ -36,6 +36,34 @@ var shoots = {
     },
 };
 
+var groupMeteors = [];
+var meteors = {
+    time: 0,
+    spawMeteors() {
+        this.time += 1;
+    
+        if(this.time >= 60) {
+            groupMeteors.push(new Meteors(0,0,50,50, "assets/meteoro.png"));
+            this.time = 0;
+        }
+    },   
+
+    draw(){
+        groupMeteors.forEach((meteor)=>{
+            meteor.draw();
+        });
+    },
+    update(){
+        this.spawMeteors();
+        groupMeteors.forEach((meteor)=>{
+            meteor.move();
+
+
+        });
+    },
+};
+
+
 var infinityBg = {
     bg: new Obj(0,0,500, 900, "assets/fundo.png"),
     bg2: new Obj(0,-900, 500, 900, "assets/fundo.png"),
@@ -97,11 +125,13 @@ var game = {
         this.score.draw_text(30, "Arial", 40, 40, "white");
         this.ship.draw();
         shoots.draw();
+        meteors.draw();
 
     },
     update(){
         infinityBg.moveBg();
         shoots.update();
+        meteors.update();
     },
 
 };
