@@ -79,7 +79,7 @@ var meteors = {
                 // Meteors have differents speed so, if remove "meteor[0]" you may remove the wrong meteor
                 //groupMeteors.splice(meteor[0],1);
                 groupMeteors.splice(groupMeteors.indexOf(meteor),1);
-
+                changeScene(gameOver);
             }
 
         });
@@ -162,14 +162,20 @@ var game = {
 var gameOver = {
 
     score: new Text("0"),
+    label_gameover: new Text("GameOver"),
 
     draw(){
         infinityBg.draw();
         this.score.draw_text(30, "Arial", 40, 40, "white");
+        this.label_gameover.draw_text(60, "Arial", 100, 450, "white");
     },
     update(){
         infinityBg.moveBg();
     },
+
+    click(){
+        changeScene(menu);
+    }
 }
 
 function main() {
