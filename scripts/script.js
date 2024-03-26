@@ -41,9 +41,13 @@ var meteors = {
     time: 0,
     spawMeteors() {
         this.time += 1;
+
+        size = Math.random () * (80 - 50) + 50;
+        positionX = Math.random () * (450 - 10) + 10;
     
         if(this.time >= 60) {
-            groupMeteors.push(new Meteors(0,0,50,50, "assets/meteoro.png"));
+
+            groupMeteors.push(new Meteors(positionX, -100,size,size, "assets/meteoro.png"));
             this.time = 0;
         }
     },   
